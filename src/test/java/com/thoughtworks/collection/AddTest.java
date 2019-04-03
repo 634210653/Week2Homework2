@@ -80,6 +80,7 @@ public class AddTest {
         assertThat(add.getProcessedList(arrayList)).isEqualTo(resultList);
     }
 
+
     @Test
     public void should_return_median_of_even() {
         //求数组中所有偶数组成的数组的中位数

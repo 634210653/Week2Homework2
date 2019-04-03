@@ -20,4 +20,16 @@ public class Utils {
         }
         return res;
     }
+
+    public static List<Integer> range(int start,int end,Condition<Integer> con){
+
+        int step = start>end?-1:1;
+        List<Integer> res = new ArrayList<Integer>();
+        for(int i=start;i!=end+step; i=i+step){
+            if(con.getCondition(i)){
+                res.add(i);
+            }
+        }
+        return res;
+    }
 }

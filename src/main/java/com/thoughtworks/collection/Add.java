@@ -1,5 +1,6 @@
 package com.thoughtworks.collection;
 
+import com.thoughtworks.utility.Utils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -9,17 +10,12 @@ import java.util.List;
 
 public class Add {
 
-    public  boolean isEvens(int number){
-        return  number%2 == 0 ? true : false;
-    }
-
     public int getSumOfEvens(int leftBorder, int rightBorder) {
 
-        int low = leftBorder<rightBorder? leftBorder:rightBorder;
-        int high = leftBorder>rightBorder? leftBorder:rightBorder;
+        List<Integer>borders = Utils.sortBorder(leftBorder,rightBorder);
         int sum = 0;
-        for(int i = low;i<=high;i++){
-            if(this.isEvens(i)){
+        for(int i = borders.get(0);i<=borders.get(1);i++) {
+            if(Utils.isEvens(i)){
                 sum += i;
             }
         }
@@ -28,11 +24,10 @@ public class Add {
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
 
-        int low = leftBorder<rightBorder? leftBorder:rightBorder;
-        int high = leftBorder>rightBorder? leftBorder:rightBorder;
+        List<Integer>borders = Utils.sortBorder(leftBorder,rightBorder);
         int sum = 0;
-        for(int i = low;i<=high;i++) {
-            if(!isEvens(i)){
+        for(int i = borders.get(0);i<=borders.get(1);i++) {
+            if(!Utils.isEvens(i)){
                 sum += i;
             }
         }
@@ -52,7 +47,7 @@ public class Add {
 
         for (int i=0;i<arrayList.size();i++) {
             int num = arrayList.get(i);
-            if (!isEvens(num)) {
+            if (!Utils.isEvens(num)) {
                 arrayList.set(i, num * 3 + 2);
             }
         }
@@ -63,7 +58,7 @@ public class Add {
 
         int sum = 0;
         for(int num : arrayList){
-            if(!isEvens(num)){
+            if(!Utils.isEvens(num)){
                 sum += num*3+5;
             }
         }
@@ -74,7 +69,7 @@ public class Add {
         //get all even or get indexes
         List<Integer> evens = new ArrayList<Integer>();
         for(int num : arrayList){
-            if(isEvens(num)){
+            if(Utils.isEvens(num)){
                 evens.add(num);
             }
         }
@@ -86,7 +81,7 @@ public class Add {
          List<Integer> evens = getEvens(arrayList);
          //get median
         int idx = evens.size()/2;
-        if(isEvens(evens.size())){
+        if(Utils.isEvens(evens.size())){
            return (evens.get(idx-1)+evens.get(idx))/2.0;
         }else{
            return evens.get(idx);
@@ -117,7 +112,7 @@ public class Add {
         LinkedList<Integer> evens = new LinkedList<Integer>();
         LinkedList<Integer> odds = new LinkedList<Integer>();
         for(int num : arrayList){
-            if(isEvens(num)){
+            if(Utils.isEvens(num)){
                 int idx = 0;
                 while(idx<evens.size()){
                     if(evens.get(idx)>=num)

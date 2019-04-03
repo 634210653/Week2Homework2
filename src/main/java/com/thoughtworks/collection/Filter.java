@@ -3,8 +3,7 @@ package com.thoughtworks.collection;
 import com.thoughtworks.utility.Utils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Filter {
 
@@ -20,14 +19,26 @@ public class Filter {
     }
 
     public List<Integer> filterMultipleOfThree() {
-        throw new NotImplementedException();
+
+        List<Integer> res  = new ArrayList<Integer>();
+        for(int num : array){
+            if(num%3 == 0){
+                res.add(num);
+            }
+        }
+        return res;
     }
 
     public List<Integer> getCommonElements(List<Integer> firstList, List<Integer> secondList) {
-        throw new NotImplementedException();
+
+        int [] arr1 = firstList.stream().mapToInt(Integer::valueOf).toArray();
+        int [] arr2 = secondList.stream().mapToInt(Integer::valueOf).toArray();
+        return  new CollectionOperator().popCommonElement(arr1,arr2);
     }
 
     public List<Integer> getDifferentElements() {
-        throw new NotImplementedException();
+
+        HashSet<Integer> set = new HashSet<>(array);
+        return  new ArrayList<Integer>(set);
     }
 }

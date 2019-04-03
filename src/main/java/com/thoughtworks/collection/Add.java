@@ -65,20 +65,9 @@ public class Add {
         return sum;
     }
 
-    public List<Integer> getEvens(List<Integer> arrayList){
-        //get all even or get indexes
-        List<Integer> evens = new ArrayList<Integer>();
-        for(int num : arrayList){
-            if(Utils.isEvens(num)){
-                evens.add(num);
-            }
-        }
-        return evens;
-    }
-
     public double getMedianOfEven(List<Integer> arrayList) {
 
-         List<Integer> evens = getEvens(arrayList);
+         List<Integer> evens = Utils.getEvens(arrayList);
          //get median
         int idx = evens.size()/2;
         if(Utils.isEvens(evens.size())){
@@ -90,7 +79,7 @@ public class Add {
 
     public double getAverageOfEven(List<Integer> arrayList) {
 
-        List<Integer> evens = getEvens(arrayList);
+        List<Integer> evens = Utils.getEvens(arrayList);
         double avg = 0.0;
         for(int i=0;i<evens.size();i++){
             avg = (avg * i+ evens.get(i))/ (i+1);
@@ -99,12 +88,12 @@ public class Add {
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
-        return getEvens(arrayList).contains(specialElment);
+        return Utils.getEvens(arrayList).contains(specialElment);
     }
 
     public List<Integer> getUnrepeatedFromEvenIndex(List<Integer> arrayList) {
         //get Set
-         HashSet<Integer> set =  new HashSet<Integer>(getEvens(arrayList));
+         HashSet<Integer> set =  new HashSet<Integer>(Utils.getEvens(arrayList));
         return new ArrayList<Integer>(set);
     }
 

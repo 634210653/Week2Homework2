@@ -39,13 +39,8 @@ public class CollectionOperator {
 
     public List<Integer> popEvenElments(int[] array) {
 
-        List<Integer> res = new ArrayList<Integer>();
-        for(int i=0;i<array.length;i++){
-            if(Utils.isEvens(array[i])){
-                res.add(array[i]);
-            }
-        }
-        return  res;
+        List<Integer> res = new ArrayList<Integer>( Arrays.stream(array).boxed().collect(Collectors.toList()));
+        return  Utils.getEvens(res);
     }
 
     public int popLastElment(int[] array) {

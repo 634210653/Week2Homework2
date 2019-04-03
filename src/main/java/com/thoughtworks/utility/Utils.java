@@ -32,4 +32,15 @@ public class Utils {
         }
         return res;
     }
+
+    public static List<Integer> getEvens(List<Integer> arrayList){
+        //get all even or get indexes
+        List<Integer> evens = new ArrayList<Integer>();
+        for(int num : arrayList){
+            if(Utils.isEvens(num)){
+                evens.add(num);
+            }
+        }
+        return evens;
+    }
 }
